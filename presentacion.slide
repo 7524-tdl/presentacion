@@ -8,15 +8,26 @@ Go, el reemplazo definitivo de C?
 - Alexis Daciuk
 
 * Origen 
-Anunciado en noviembre del 2009, Go nació como un experimento de Robert Griesemer y Rob Pike, ingenieros de Google, junto a Ken Thompson (creador del Lenguaje 
-de programación B, predecesor de C), con el objetivo de diseñar un lenguaje de programación que resuelva problemas comunes de
-otros lenguajes de programación, sin perder sus características útiles.
+Anunciado en noviembre del 2009, Go nació como un experimento de Robert Griesemer y Rob Pike, ingenieros de Google, junto a Ken Thompson (creador del Lenguaje de programación B, predecesor de C), con el objetivo de diseñar un lenguaje que resuelva problemas comunes de otros lenguajes de programación, sin perder sus características útiles.
 
 Características planeadas del nuevo lenguaje:
 
-- Estaticamente tipado
-- Productivo (?) y fácil de leer, sin mucha repetición ni muchas palabras reservadas
-- Sin necesidad de un IDE
-- Con soporte de redes (?) y concurrencia
+- Estáticamente tipado.
+- Productivo (?) y fácil de leer, sin mucha repetición ni demasiadas palabras reservadas.
+- Sin necesidad de un IDE.
+- Con soporte de redes (?) y concurrencia.
 
-En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por su complejidad
+En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por su innecesaria complejidad.
+
+
+* Cosas copadas (sujeto a cambios)
+- Inferencia de tipos.
+- Binarios linkeados estáticamente, es decir, sin dependencias externas.
+- AGREGAR MAS.
+
+
+* Cuando usar Go
+
+
+
+* Cuando no usar Go
