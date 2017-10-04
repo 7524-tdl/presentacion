@@ -5,7 +5,6 @@ RUN apk add --update\
     git 
 
 WORKDIR /go/src/app
-COPY presentacion/presentacion.slide ${GOPATH}/src/app
 RUN go-wrapper download golang.org/x/tools/cmd/present
 RUN go-wrapper install golang.org/x/tools/cmd/present
 
