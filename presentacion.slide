@@ -77,5 +77,8 @@ No hace falta crear un puntero a 'musician'. Go permite saltearse ese paso, sól
     - bayesian : Clasificador Bayesiano ingenuo
     - prometheus-operator : Biblioteca para manejar Clusters Prometheus sobre Kubernetes
 
-- Encuestas oficiales 2016
-    - 63% 
+- Uso (segun OpenHub.net)
+    - Proyectos : 2 677
+    - Lineas : 122 943 230 de las cuales, 93 518 418 son de código y 17 313 977 son comentarios
+    - Personas contribuyendo : 18 044
+    - Commits : 803 563 
