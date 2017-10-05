@@ -24,9 +24,36 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 - Tipado: fuerte, estático, inferido, estructurado
 
 * Cosas curiosas
-Reciever functions y sus argumentos
+Los "métodos" de Go y sus argumentos:
 
-.play boring3.go /START OMIT/,/END OMIT/
+Go permite definir funciones que se aplican sobre instancias de tipos o estructuras.
+
+.play code/impossibru.go /START OMIT/,/END OMIT/
+
+* ¿Qué hicimos mal? 
+
+.image images/impossibru.png
+
+* ¿Por qué?
+
+- Los "métodos" en realidad son funciones con un argumento vinculado a una instancia de una estructura o un valor.
+- Todas las funciones en Go reciben sus argumentos como copia del valor.
+- En este caso modificamos la copia de jimmy, pero no a jimmy.
+
+¿Cómo se utilizan entonces los "métodos" de Go?
+
+Si una función modifica un valor y se quiere que ese cambio persista fuera de la función hay dos opciones:
+
+1. Se retorna el valor modificado
+2. En lugar de recibir el valor, que la función reciba un punteros
+
+Go permite usar punteros de forma bastante simple. 
+
+* "Métodos" con punteros
+
+No hace falta crear un puntero a 'musician'. Go permite saltearse ese paso, sólo hace falta definir que la función reciba un puntero. 
+.play code/impossibru2.go /START OMIT/,/END OMIT/
+
 
 * Cosas copadas (sujeto a cambios)
 - Inferencia de tipos.
