@@ -24,6 +24,8 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 - Tipado: fuerte, estático, inferido, estructurado
 
 * Cosas curiosas
+* Caso curioso 1
+
 Los "métodos" de Go y sus argumentos:
 
 Go permite definir funciones que se aplican sobre instancias de tipos o estructuras.
