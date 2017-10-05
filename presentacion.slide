@@ -79,8 +79,10 @@ No hace falta crear un puntero a 'musician'. Go permite saltearse ese paso, sól
     - bayesian : Clasificador Bayesiano ingenuo
     - prometheus-operator : Biblioteca para manejar Clusters Prometheus sobre Kubernetes
 
-- Uso (segun OpenHub.net)
+- Uso (según OpenHub.net)
     - Proyectos : 2 677
     - Lineas : 122 943 230 de las cuales, 93 518 418 son de código y 17 313 977 son comentarios
     - Personas contribuyendo : 18 044
     - Commits : 803 563 
+
+A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el puesto 17, ascendiendo 2 puestos con respecto al mismo mes del año pasado, en 2016 fue en lenguaje que mas popularidad gano.
