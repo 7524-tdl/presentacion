@@ -2,7 +2,7 @@
 
 # Setteo variables
 DOCKER="sudo docker"
-IMAGE_NAME="golang_present"
+IMAGE_NAME="golang_present:latest"
 CONTAINER_NAME="presentacion"
 
 # Me aseguro de no tener un container que se llame $CONTAINER_NAME
