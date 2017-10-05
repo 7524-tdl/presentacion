@@ -23,6 +23,10 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 - Paradigma: Compilado, concurrente, imperativo, estructurado
 - Tipado: fuerte, estático, inferido, estructurado
 
+* Cosas curiosas
+Reciever functions y sus argumentos
+
+.play boring3.go /START OMIT/,/END OMIT/
 
 * Cosas copadas (sujeto a cambios)
 - Inferencia de tipos.

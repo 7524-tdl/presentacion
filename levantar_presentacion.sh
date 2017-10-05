@@ -17,3 +17,4 @@ $DOCKER run -d --name $CONTAINER_NAME -p 3999:3999 $IMAGE_NAME
 
 #Copio la presentacion dentro del container
 $DOCKER cp presentacion.slide $CONTAINER_NAME:/go/src/app
+$DOCKER cp boring3.go $CONTAINER_NAME:/go/src/app
