@@ -35,3 +35,13 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 
 
 * Cuando no usar Go
+
+
+
+* Estadisticas
+- Top 5 frameworks (segun las estadisticas de golanglibs.com)
+    - *node_exporter* : para manejar metricas.
+    - *stats* : Paquete con funciones estadisticas. 
+    - *gonum* : Conjunto de bibliotecas numericas.
+    - *bayesian* : Clasificador Bayesiano ingenuo
+    - *prometheus-operator* : Biblioteca para manejar Clusters Prometheus sobre Kubernetes
