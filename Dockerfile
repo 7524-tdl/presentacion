@@ -11,4 +11,4 @@ RUN go-wrapper install golang.org/x/tools/cmd/present
 
 EXPOSE 3999
 
-ENTRYPOINT /go/bin/present -http="0.0.0.0:3999"
+ENTRYPOINT /go/bin/present -http="0.0.0.0:3999" -orighost="127.0.0.1"
