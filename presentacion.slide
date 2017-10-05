@@ -19,6 +19,10 @@ Características planeadas del nuevo lenguaje:
 
 En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por su innecesaria complejidad.
 
+* Características básicas
+- Paradigma: Compilado, concurrente, imperativo, estructurado
+- Tipado: fuerte, estático, inferido, estructurado
+
 
 * Cosas copadas (sujeto a cambios)
 - Inferencia de tipos.
