@@ -1,5 +1,5 @@
 FROM golang:alpine
-LABEL version=0.0.1 author="Alexis Daciuk <adaciuk@gmail.com"
+LABEL version=0.0.2 author="Alexis Daciuk <adaciuk@gmail.com"
 
 RUN apk add --update\
     git 
