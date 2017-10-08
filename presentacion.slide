@@ -2,12 +2,15 @@ Go, el reemplazo definitivo de C?
 75.24 - Teoría de Lenguajes
 
 * Integrantes :
-- Lucas Perea
-- Nicolas Ledesma
-- Federico Longhi
 - Alexis Daciuk
+- Nicolás Ledesma
+- Federico Longhi
+- Lucas Perea
+
+.image images/gopher-1.png
 
 * Origen 
+
 Anunciado en noviembre del 2009, Go nació como un experimento de Robert Griesemer y Rob Pike, ingenieros de Google, junto a Ken Thompson (creador del Lenguaje de programación B, predecesor de C), con el objetivo de diseñar un lenguaje que resuelva problemas comunes de otros lenguajes de programación, sin perder sus características útiles.
 
 Características planeadas del nuevo lenguaje:
@@ -23,12 +26,55 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 - Paradigma: Compilado, concurrente, imperativo, estructurado
 - Tipado: fuerte, estático, inferido, estructurado
 
+
+
+* Cosas copadas (sujeto a cambios)
+- Inferencia de tipos.
+- Binarios linkeados estáticamente, es decir, sin dependencias externas.
+- AGREGAR MAS.
+
 * Cosas curiosas
-* Caso curioso 1
 
-Los "métodos" de Go y sus argumentos:
+.image images/gopher-2.png
 
-Go permite definir funciones que se aplican sobre instancias de tipos o estructuras.
+* Argument functions vs. Receiver functions 
+
+Funciones clásicas con argumentos
+
+- Definición
+
+        func ladrar(p perro) { // funcion con argumento
+
+- Invocación
+
+        ladrar(p) 
+
+
+Funciones con un parámetro _receiver_
+
+- Definición
+
+        func (p perro) ladrar() { // funcion con "receiver"
+
+- Invocación
+
+        p.ladrar() // Method, is that you?
+
+*  Comportamiento de ambas
+
+- Ambas formas de definir la función tienen el mismo comportamiento
+
+- Algunos llaman "métodos" a las receiver functions, como si GoLang fuera un lenguaje orientado a objetos.
+
+*¿Cuándo*usar*cada*una?*
+
+- Usar el criterio de la progamación orientada a objetos sería un enfoque erróneo. Go no es un lenguaje OOP. _¿Sólo_los_perros_ladran?_¿Puedo_yo_ladrar_como_un_perro?_.
+
+- Si estamos usando interfaces, es más intuitivo usar receivers para el tipo que está implementando la interfaz.
+
+* Las funciones de Go y sus argumentos
+
+Supongamos que queremos actualizar una estructura aplicándole una función:
 
 .play code/impossibru.go /START OMIT/,/END OMIT/
 
@@ -38,30 +84,48 @@ Go permite definir funciones que se aplican sobre instancias de tipos o estructu
 
 * ¿Por qué?
 
-- Los "métodos" en realidad son funciones con un argumento vinculado a una instancia de una estructura o un valor.
-- Todas las funciones en Go reciben sus argumentos como copia del valor.
-- En este caso modificamos la copia de jimmy, pero no a jimmy.
+- Todas las *funciones* en Go  reciben sus argumentos como *copia*del*valor*. Esta regla *también*aplica*a*las*receiver*functions*.
+- En este caso modificamos la copia de Jimmy, pero no a Jimmy.
 
-¿Cómo se utilizan entonces los "métodos" de Go?
+*¿Cómo*hacemos*lo*que*queríamos*hacer?*
 
-Si una función modifica un valor y se quiere que ese cambio persista fuera de la función hay dos opciones:
+Si una función modifica un valor y queremos que ese cambio persista fuera de la función hay dos opciones:
 
-1. Se retorna el valor modificado
-2. En lugar de recibir el valor, que la función reciba un punteros
+1. Que la función retorne el valor modificado
+2. Que la función reciba un argumento de tipo puntero en lugar de recibir el tipo del valor.
 
 Go permite usar punteros de forma bastante simple. 
 
-* "Métodos" con punteros
+* Receiver functions con punteros
 
 No hace falta crear un puntero a 'musician'. Go permite saltearse ese paso, sólo hace falta definir que la función reciba un puntero. 
+.play -edit code/impossibru.go /START OMIT/,/END OMIT/
+
+* Comportamiento en los tipos básicos
+
+Ok, entonces deberíamos esperar este comportamiento en los tipos básicos, ¿no?
+
 .play code/impossibru2.go /START OMIT/,/END OMIT/
 
+* ¿Por qué?
 
-* Cosas copadas (sujeto a cambios)
-- Inferencia de tipos.
-- Binarios linkeados estáticamente, es decir, sin dependencias externas.
-- AGREGAR MAS.
+.image images/what.jpg
 
+* Tipos por valor y por referencia
+
+*Tipos*por*valor*
+
+- strings, ints, floats, bools, structs
+
+Con estos tipos sería necesario agregar punteros en casos como el anterior.
+
+*Tipos*por*referencia*
+
+- slices, maps, functions, channels, pointers
+
+Los tipos por referencia se valen de estructuras que referencian a donde están realmente los valores, para se pueda operar con ellos.
+
+No sólo no es necesario operar sobre punteros dentro de las funciones, operar con punteros a estas estructuras ocasionaría errores.
 
 * Cuando usar Go
 

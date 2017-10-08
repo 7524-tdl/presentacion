@@ -21,7 +21,7 @@ func main() {
 	fmt.Println(jimmy.firstName, "plays the", jimmy.instrument)
 }
 
-func (m musician) updateInstrument(newInstrument string) {
+func (m musician) updateInstrument(newInstrument string) { // Receiver function
 	m.instrument = newInstrument
 }
 
