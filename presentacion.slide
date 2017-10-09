@@ -76,6 +76,44 @@ Varios paquetes utilizan interfaces como `Reader`, por ejemplo, el `body` de un 
 
 .link https://golang.org/pkg/io/
 
+* Goroutines, la implementación de la concurrencia en Go
+
+- Son *green*threads*, más adelante vamos a ahondar en esto
+
+- La sintaxis es *sumamente*simple*. Se trabaja con concurrencia abrstrayéndose completamente del manejo de threads.
+
+- El complemento de las goroutines son los *channels*, que sirven justamente como canal de comunicación entre los distintos threads.
+
+.image images/gopher-5.png
+
+* Ejemplo de juguete (I)
+
+Supongamos que quiero resolver lo siguiente en forma concurrente.
+
+.play code/routines-1.go /START OMIT/,/END OMIT/
+
+* Ejemplo de juguete (II)
+
+Basta con poner "`go`" delante del llamado a las funciones para que se ejecuten en goroutines
+
+.play code/routines-2.go /START OMIT/,/END OMIT/
+
+* ¿Qué pasó?
+
+El *hilo*principal*terminó* de ejecutarse *antes*de*que*pudieran*terminar*las*goroutines*.
+
+*¿Cómo*lo*resolvemos?*
+
+Tenemos que acumular los datos obtenidos en un store e imprimirlos en la medida que se obtengan.
+
+Para esto utilizamos *channels*. Los channels son tipados, esto significa que cada uno maneja *un*único*tipo*de*dato*.
+
+.image images/gopher-4.png
+
+* Ejemplo de juguete (III)
+
+.play code/routines-3.go /START OMIT/,/END OMIT/
+
 * Cosas curiosas
 
 .image images/gopher-2.png
