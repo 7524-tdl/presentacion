@@ -238,7 +238,12 @@ A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el pues
 
 Go vs NodeJS
 
-    - Madurez : Ambos proyectos son bastante maduros, aunque la API de Node esta en constante cambio, eso puede traer problemas a futuro futuro
-    - Rendimiento : Go tiene un rendimiento similar a C y C++ (es decir, bastante bueno) mientras Node, al ser Javascript dinamicamente tipado, no alcanza el nivel de rendimiento de Go. dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
-    - Concurrencia : Go usa `goroutines` para concurrencia, que se clasifica como green-threads (segun lo que vimos en clase), mientras Node usa event-callbacks (agregar mas sobre concurrencia en js) mientras Node usa event-callbacks (agregar mas sobre concurrencia en js)
-    - 
+    - Madurez : Ambos proyectos son bastante maduros, aunque la API de Node esta en constante cambio,
+    eso puede traer problemas a futuro futuro
+    - Rendimiento : Go tiene un rendimiento similar a C y C++ (es decir, bastante bueno) mientras Node,
+     al ser Javascript dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
+     dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
+    - Concurrencia : Go usa `goroutines` para concurrencia, que se clasifica como green-threads 
+    (segun lo que vimos en clase), mientras Node (mas bien JS), usa asincronismo para 
+    emular concurrencia a nivel usuario.
+    - Escalabilidad : Go fue pensando con 
