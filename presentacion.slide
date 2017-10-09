@@ -33,49 +33,6 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 - Binarios linkeados estáticamente, es decir, sin dependencias externas.
 - AGREGAR MAS.
 
-* Features importantes
-
-.image images/gopher-3.gif
-
-* Interfaces
-
-- Las interfaces en Go son herramientas para definir comportamientos similares en entidades o estructuras diferentes.
-
-- La implementación de una interfaz es implícita. Basta con que una estructura implemente exactamente las funciones descriptas por la interfaz.
-
-- Mientras int, float, string, etc. son tipos concretos (al declararlos se infiere automáticamente su tipo), el tipo interfaz se infiere una vez que se definen las funciones que implementa la interfaz.
-
-- Las interfaces *no* son tipos genéricos. Simplemente ayudan a encapsular comportamiento dentro de un contrato.
-
-- El comportamiento de *muchas* librerías de Go está encerrado en interfaces.
-
-* Ejemplo
-
-.play code/interfaces.go /START OMIT/,/END OMIT/
-
-* Usos en packages
-
-En el package `io` se define la siguiente interfaz:
-
-        type ReadWriter interface {
-            Reader
-            Writer
-        }
-
-Que a su vez incluye las interfaces `Reader` y `Writer`.
-
-        type Reader interface {
-                Read(p []byte) (n int, err error)
-        }
-
-        type Writer interface {
-                Write(p []byte) (n int, err error)
-        }
-
-Varios paquetes utilizan interfaces como `Reader`, por ejemplo, el `body` de un request del paquete `net/http` lo implementa.
-
-.link https://golang.org/pkg/io/
-
 * Cosas curiosas
 
 .image images/gopher-2.png
@@ -206,6 +163,6 @@ Go vs NodeJS
      al ser Javascript dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
      dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
     - Concurrencia : Go usa `goroutines` para concurrencia, que se clasifica como green-threads 
-    (segun lo que vimos en clase), mientras Node usa event-callbacks 
-    (agregar mas sobre concurrencia en js)
-    - 
+    (segun lo que vimos en clase), mientras Node (mas bien JS), usa asincronismo para 
+    emular concurrencia a nivel usuario.
+    - Escalabilidad : Go fue pensando con 
