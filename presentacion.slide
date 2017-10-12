@@ -1,6 +1,8 @@
 Go, el reemplazo definitivo de C?
 75.24 - Teoría de Lenguajes
 
+##########################################################
+
 * Integrantes :
 - Alexis Daciuk
 - Nicolás Ledesma
@@ -8,6 +10,8 @@ Go, el reemplazo definitivo de C?
 - Lucas Perea
 
 .image images/gopher-1.png
+
+##########################################################
 
 * Origen 
 
@@ -22,20 +26,26 @@ Características planeadas del nuevo lenguaje:
 
 En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por su innecesaria complejidad.
 
+##########################################################
+
 * Características básicas
 - Paradigma: Compilado, concurrente, imperativo, estructurado
 - Tipado: fuerte, estático, inferido, estructurado
 
-
+##########################################################
 
 * Cosas copadas (sujeto a cambios)
 - Inferencia de tipos.
 - Binarios linkeados estáticamente, es decir, sin dependencias externas.
 - AGREGAR MAS.
 
+##########################################################
+
 * Features importantes
 
 .image images/gopher-3.gif
+
+##########################################################
 
 * Interfaces
 
@@ -49,9 +59,13 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 
 - El comportamiento de *muchas* librerías de Go está encerrado en interfaces.
 
+##########################################################
+
 * Ejemplo
 
 .play code/interfaces.go /START OMIT/,/END OMIT/
+
+##########################################################
 
 * Usos en packages
 
@@ -76,6 +90,9 @@ Varios paquetes utilizan interfaces como `Reader`, por ejemplo, el `body` de un 
 
 .link https://golang.org/pkg/io/
 
+##########################################################
+
+
 * Goroutines, la implementación de la concurrencia en Go
 
 - Son *green*threads*, más adelante vamos a ahondar en esto
@@ -86,17 +103,23 @@ Varios paquetes utilizan interfaces como `Reader`, por ejemplo, el `body` de un 
 
 .image images/gopher-5.png
 
+##########################################################
+
 * Ejemplo de juguete (I)
 
 Supongamos que quiero resolver lo siguiente en forma concurrente.
 
 .play code/routines-1.go /START OMIT/,/END OMIT/
 
+##########################################################
+
 * Ejemplo de juguete (II)
 
 Basta con poner "`go`" delante del llamado a las funciones para que se ejecuten en goroutines
 
 .play code/routines-2.go /START OMIT/,/END OMIT/
+
+##########################################################
 
 * ¿Qué pasó?
 
@@ -110,13 +133,19 @@ Para esto utilizamos *channels*. Los channels son tipados, esto significa que ca
 
 .image images/gopher-4.png
 
+##########################################################
+
 * Ejemplo de juguete (III)
 
 .play code/routines-3.go /START OMIT/,/END OMIT/
 
+##########################################################
+
 * Cosas curiosas
 
 .image images/gopher-2.png
+
+##########################################################
 
 * Argument functions vs. Receiver functions 
 
@@ -141,6 +170,8 @@ Funciones con un parámetro _receiver_
 
         p.ladrar() // Method, is that you?
 
+##########################################################
+
 *  Comportamiento de ambas
 
 - Ambas formas de definir la función tienen el mismo comportamiento
@@ -153,15 +184,21 @@ Funciones con un parámetro _receiver_
 
 - Si estamos usando interfaces, es más intuitivo usar receivers para el tipo que está implementando la interfaz.
 
+##########################################################
+
 * Las funciones de Go y sus argumentos
 
 Supongamos que queremos actualizar una estructura aplicándole una función:
 
 .play code/impossibru.go /START OMIT/,/END OMIT/
 
+##########################################################
+
 * ¿Qué hicimos mal? 
 
 .image images/impossibru.png
+
+##########################################################
 
 * ¿Por qué?
 
@@ -177,10 +214,14 @@ Si una función modifica un valor y queremos que ese cambio persista fuera de la
 
 Go permite usar punteros de forma bastante simple. 
 
+##########################################################
+
 * Receiver functions con punteros
 
 No hace falta crear un puntero a 'musician'. Go permite saltearse ese paso, sólo hace falta definir que la función reciba un puntero. 
 .play -edit code/impossibru.go /START OMIT/,/END OMIT/
+
+##########################################################
 
 * Comportamiento en los tipos básicos
 
@@ -188,9 +229,13 @@ Ok, entonces deberíamos esperar este comportamiento en los tipos básicos, ¿no
 
 .play code/impossibru2.go /START OMIT/,/END OMIT/
 
+##########################################################
+
 * ¿Por qué?
 
 .image images/what.jpg
+
+##########################################################
 
 * Tipos por valor y por referencia
 
@@ -208,13 +253,15 @@ Los tipos por referencia se valen de estructuras que referencian a donde están 
 
 No sólo no es necesario operar sobre punteros dentro de las funciones, operar con punteros a estas estructuras ocasionaría errores.
 
+##########################################################
+
 * Cuando usar Go
 
-
+##########################################################
 
 * Cuando no usar Go
 
-
+##########################################################
 
 * Estadísticas
 Top 5 frameworks (según las estadísticas de golanglibs.com)
@@ -234,6 +281,8 @@ Uso (según OpenHub.net)
 
 A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el puesto 17, ascendiendo 2 puestos con respecto al mismo mes del año pasado, en 2016 fue en lenguaje que más popularidad gano.
 
+##########################################################
+
 * Comparación con lenguajes populares
 
 Go vs NodeJS
@@ -243,6 +292,7 @@ Go vs NodeJS
 - *Concurrencia:* Go usa `goroutines` para concurrencia, que se clasifica como green-threads (según lo que vimos en clase), mientras Node (mas bien JS), usa asincronismo para emular concurrencia a nivel usuario.
 - *Ecosistema:* Mientras Go tiene mas de 58 mil bibliotecas, Node esta muy arriba con mas de 100 mil paquetes.
   
+##########################################################
 
 * Concurrencia en Go
 
@@ -260,5 +310,8 @@ Como la creación y la destrucción son manejados por el runtime de Go, así que
 
 Como las *goroutines* son planificados de forma cooperativa y cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
 
+##########################################################
 
+* Como se ejecutan las goroutines
 
+Al scheduler de Go, solamente tiene en cuenta las goroutines no bloqueadas, 
