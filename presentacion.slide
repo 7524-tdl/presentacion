@@ -219,18 +219,18 @@ No sólo no es necesario operar sobre punteros dentro de las funciones, operar c
 * Estadísticas
 Top 5 frameworks (según las estadísticas de golanglibs.com)
 
-    - node_exporter : para manejar métricas.
-    - stats : Paquete con funciones estadísticas. 
-    - gonum : Conjunto de bibliotecas numéricas.
-    - bayesian : Clasificador Bayesiano ingenuo.
-    - prometheus-operator : Biblioteca para manejar Clusters Prometheus sobre Kubernetes.
+        - node_exporter : para manejar métricas.
+        - stats : Paquete con funciones estadísticas. 
+        - gonum : Conjunto de bibliotecas numéricas.
+        - bayesian : Clasificador Bayesiano ingenuo.
+        - prometheus-operator : Biblioteca para manejar Clusters Prometheus sobre Kubernetes.
 
 Uso (según OpenHub.net)
 
-    - Proyectos : 2 677.
-    - Lineas : 122 943 230 de las cuales, 93 518 418 son de código y 17 313 977 son comentarios.
-    - Personas contribuyendo : 18 044.
-    - Commits : 803 563. 
+        - Proyectos : 2 677.
+        - Lineas : 122 943 230 de las cuales, 93 518 418 son de código y 17 313 977 son comentarios.
+        - Personas contribuyendo : 18 044.
+        - Commits : 803 563. 
 
 A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el puesto 17, ascendiendo 2 puestos con respecto al mismo mes del año pasado, en 2016 fue en lenguaje que más popularidad gano.
 
@@ -238,14 +238,27 @@ A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el pues
 
 Go vs NodeJS
 
-    - Madurez : Ambos proyectos son bastante maduros, aunque la API de Node esta en constante cambio,
-    eso puede traer problemas a futuro futuro
-    - Rendimiento : Go tiene un rendimiento similar a C y C++ (es decir, bastante bueno) mientras Node,
-     al ser Javascript dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
-     dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
-    - Concurrencia : Go usa `goroutines` para concurrencia, que se clasifica como green-threads 
-    (segun lo que vimos en clase), mientras Node (mas bien JS), usa asincronismo para 
-    emular concurrencia a nivel usuario.
-    - Ecosistema : Mientras Go tiene mas de 58 mil bibliotecas, Node esta muy
-    arriba con mas de 100 mil paquetes.
-    
+- *Madurez:* Ambos proyectos son bastante maduros, aunque la API de Node esta en constante cambio eso puede traer problemas a futuro futuro
+- *Rendimiento:* Go tiene un rendimiento similar a C y C++ (es decir, bastante bueno) mientras Node, al ser Javascript dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
+- *Concurrencia:* Go usa `goroutines` para concurrencia, que se clasifica como green-threads (según lo que vimos en clase), mientras Node (mas bien JS), usa asincronismo para emular concurrencia a nivel usuario.
+- *Ecosistema:* Mientras Go tiene mas de 58 mil bibliotecas, Node esta muy arriba con mas de 100 mil paquetes.
+  
+
+* Concurrencia en Go
+
+Como se menciono en un slide anterior de esta presentación, concurrencia en Go se maneja con *goroutines*, que son manejados por un scheduler interno de Go y son Green Threads, según lo que vimos en clases pasadas.
+
+- Consumo de memoria
+
+La creación de un *goroutine* necesita nada mas 2 kB de espacio en el stack, de ser necesario, crece asignándose espacio en el heap.
+
+- Costo de creación y destrucción 
+
+Como la creación y la destrucción son manejados por el runtime de Go, así que los costos son bastante bajos.
+
+- Costo de cambio de contexto 
+
+Como las *goroutines* son planificados de forma cooperativa y cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
+
+
+
