@@ -310,8 +310,22 @@ Como la creación y la destrucción son manejados por el runtime de Go, así que
 
 Como las *goroutines* son planificados de forma cooperativa y cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
 
+: Como los schedulers modernos son O(1), la cantidad de goroutines no afecta el costo temporal de cambio de contexto
+
 ##########################################################
 
 * Como se ejecutan las goroutines
 
-Al scheduler de Go, solamente tiene en cuenta las goroutines no bloqueadas, 
+Al scheduler de Go, solamente tiene en cuenta las goroutines no bloqueadas, a nivel SO, el runtime tiene una cantidad de threads donde las goroutines van a ser ejecutadas, si una goroutine se bloquea, automáticamente el scheduler la saca de ejecución y pone otra goroutine a ejecutarse.
+
+La ejecución es planificada de forma cooperativa. 
+
+- Bloqueo
+
+Las goroutines no bloquean el thread en el cual se están ejecutando, si están bloqueadas en *requests* *de* *red*, *sleep*, *operaciones* *de* *channels* o en *primitivas* *del* *paquete* *sync*
+
+- Threads a nivel SO
+
+Aunque no se pueda controlar manualmente la cantidad de threads que va a crear la runtime, podes limitar la cantidad de threads que puede crear, usando la instrucción *runtime.GOMAXPROC(n)*
+
+: Cooperative schedule :  es un estilo de scheduling, donde cada proceso, voluntariamente cede el control de la CPU al sistema operativo (o runtime, en el caso de Go)
