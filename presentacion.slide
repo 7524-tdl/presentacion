@@ -246,4 +246,6 @@ Go vs NodeJS
     - Concurrencia : Go usa `goroutines` para concurrencia, que se clasifica como green-threads 
     (segun lo que vimos en clase), mientras Node (mas bien JS), usa asincronismo para 
     emular concurrencia a nivel usuario.
-    - Escalabilidad : Go fue pensando con 
+    - Ecosistema : Mientras Go tiene mas de 58 mil bibliotecas, Node esta muy
+    arriba con mas de 100 mil paquetes.
+    
