@@ -80,7 +80,7 @@ Varios paquetes utilizan interfaces como `Reader`, por ejemplo, el `body` de un 
 
 - Son *green*threads*, más adelante vamos a ahondar en esto
 
-- La sintaxis es *sumamente*simple*. Se trabaja con concurrencia abrstrayéndose completamente del manejo de threads.
+- La sintaxis es *sumamente*simple*. Se trabaja con concurrencia abstrayéndose completamente del manejo de threads.
 
 - El complemento de las goroutines son los *channels*, que sirven justamente como canal de comunicación entre los distintos threads.
 
