@@ -1,6 +1,7 @@
 Go, el reemplazo definitivo de C?
 75.24 - Teoría de Lenguajes
 
+
 ##########################################################
 
 * Integrantes :
@@ -10,6 +11,7 @@ Go, el reemplazo definitivo de C?
 - Lucas Perea
 
 .image images/gopher-1.png
+
 
 ##########################################################
 
@@ -26,11 +28,13 @@ Características planeadas del nuevo lenguaje:
 
 En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por su innecesaria complejidad.
 
+
 ##########################################################
 
 * Características básicas
 - Paradigma: Compilado, concurrente, imperativo, estructurado
 - Tipado: fuerte, estático, inferido, estructurado
+
 
 ##########################################################
 
@@ -39,11 +43,13 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 - Binarios linkeados estáticamente, es decir, sin dependencias externas.
 - AGREGAR MAS.
 
+
 ##########################################################
 
 * Features importantes
 
 .image images/gopher-3.gif
+
 
 ##########################################################
 
@@ -59,11 +65,13 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 
 - El comportamiento de *muchas* librerías de Go está encerrado en interfaces.
 
+
 ##########################################################
 
 * Ejemplo
 
 .play code/interfaces.go /START OMIT/,/END OMIT/
+
 
 ##########################################################
 
@@ -90,8 +98,8 @@ Varios paquetes utilizan interfaces como `Reader`, por ejemplo, el `body` de un 
 
 .link https://golang.org/pkg/io/
 
-##########################################################
 
+##########################################################
 
 * Goroutines, la implementación de la concurrencia en Go
 
@@ -103,6 +111,7 @@ Varios paquetes utilizan interfaces como `Reader`, por ejemplo, el `body` de un 
 
 .image images/gopher-5.png
 
+
 ##########################################################
 
 * Ejemplo de juguete (I)
@@ -111,6 +120,7 @@ Supongamos que quiero resolver lo siguiente en forma concurrente.
 
 .play code/routines-1.go /START OMIT/,/END OMIT/
 
+
 ##########################################################
 
 * Ejemplo de juguete (II)
@@ -118,6 +128,7 @@ Supongamos que quiero resolver lo siguiente en forma concurrente.
 Basta con poner "`go`" delante del llamado a las funciones para que se ejecuten en goroutines
 
 .play code/routines-2.go /START OMIT/,/END OMIT/
+
 
 ##########################################################
 
@@ -133,17 +144,20 @@ Para esto utilizamos *channels*. Los channels son tipados, esto significa que ca
 
 .image images/gopher-4.png
 
+
 ##########################################################
 
 * Ejemplo de juguete (III)
 
 .play code/routines-3.go /START OMIT/,/END OMIT/
 
+
 ##########################################################
 
 * Cosas curiosas
 
 .image images/gopher-2.png
+
 
 ##########################################################
 
@@ -170,6 +184,7 @@ Funciones con un parámetro _receiver_
 
         p.ladrar() // Method, is that you?
 
+
 ##########################################################
 
 *  Comportamiento de ambas
@@ -184,6 +199,7 @@ Funciones con un parámetro _receiver_
 
 - Si estamos usando interfaces, es más intuitivo usar receivers para el tipo que está implementando la interfaz.
 
+
 ##########################################################
 
 * Las funciones de Go y sus argumentos
@@ -192,11 +208,13 @@ Supongamos que queremos actualizar una estructura aplicándole una función:
 
 .play code/impossibru.go /START OMIT/,/END OMIT/
 
+
 ##########################################################
 
 * ¿Qué hicimos mal? 
 
 .image images/impossibru.png
+
 
 ##########################################################
 
@@ -214,12 +232,14 @@ Si una función modifica un valor y queremos que ese cambio persista fuera de la
 
 Go permite usar punteros de forma bastante simple. 
 
+
 ##########################################################
 
 * Receiver functions con punteros
 
 No hace falta crear un puntero a 'musician'. Go permite saltearse ese paso, sólo hace falta definir que la función reciba un puntero. 
 .play -edit code/impossibru.go /START OMIT/,/END OMIT/
+
 
 ##########################################################
 
@@ -229,11 +249,13 @@ Ok, entonces deberíamos esperar este comportamiento en los tipos básicos, ¿no
 
 .play code/impossibru2.go /START OMIT/,/END OMIT/
 
+
 ##########################################################
 
 * ¿Por qué?
 
 .image images/what.jpg
+
 
 ##########################################################
 
@@ -253,13 +275,16 @@ Los tipos por referencia se valen de estructuras que referencian a donde están 
 
 No sólo no es necesario operar sobre punteros dentro de las funciones, operar con punteros a estas estructuras ocasionaría errores.
 
+
 ##########################################################
 
 * Cuando usar Go
 
+
 ##########################################################
 
 * Cuando no usar Go
+
 
 ##########################################################
 
@@ -281,6 +306,7 @@ Uso (según OpenHub.net)
 
 A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el puesto 17, ascendiendo 2 puestos con respecto al mismo mes del año pasado, en 2016 fue en lenguaje que más popularidad gano.
 
+
 ##########################################################
 
 * Comparación con lenguajes populares
@@ -291,6 +317,7 @@ Go vs NodeJS
 - *Rendimiento:* Go tiene un rendimiento similar a C y C++ (es decir, bastante bueno) mientras Node, al ser Javascript dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
 - *Concurrencia:* Go usa `goroutines` para concurrencia, que se clasifica como green-threads (según lo que vimos en clase), mientras Node (mas bien JS), usa asincronismo para emular concurrencia a nivel usuario.
 - *Ecosistema:* Mientras Go tiene mas de 58 mil bibliotecas, Node esta muy arriba con mas de 100 mil paquetes.
+  
   
 ##########################################################
 
@@ -312,6 +339,7 @@ Como las *goroutines* son planificados de forma cooperativa y cuando se cambia d
 
 : Como los schedulers modernos son O(1), la cantidad de goroutines no afecta el costo temporal de cambio de contexto
 
+
 ##########################################################
 
 * Como se ejecutan las goroutines
@@ -329,3 +357,26 @@ Las goroutines no bloquean el thread en el cual se están ejecutando, si están 
 Aunque no se pueda controlar manualmente la cantidad de threads que va a crear la runtime, podes limitar la cantidad de threads que puede crear, usando la instrucción *runtime.GOMAXPROC(n)*
 
 : Cooperative schedule :  es un estilo de scheduling, donde cada proceso, voluntariamente cede el control de la CPU al sistema operativo (o runtime, en el caso de Go)
+
+
+##########################################################
+
+* Caso de estudio : Docker 
+
+Docker es un software para manejar y automatizar el trabajo con containers (principalmente en Linux, también en Windows, pero, who cares)
+
+(COMPLETAR CON INFO SOBRE DOCKER)
+
+
+##########################################################
+
+* Porque usan Go en Docker?
+
+- *Compilación* *estática* *:* *go* *build* compila todo a un solo binario.
+No mas "tenes que instalar n dependencias" con n -> ∞, ha no ser que uses *cgo*, que te permite usar cualquier librería de C. O si no contás a *libc* como una dependencia (pero, quien no tiene libc?).
+
+- *Es* *neutral* *:*  No es C++, no es Python, no es Ruby, no es Java.
+
+- *Tiene* *lo* *que* *necesitaban* *:* 
+
+
