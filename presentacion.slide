@@ -415,9 +415,3 @@ No mas "tenes que instalar n dependencias" con n -> ∞, ha no ser que uses *cgo
 
 
 ##########################################################
-
-* Porque usan Go en Docker?
-
-*Desventajas*
-
-*Limitaciones* *de* *go* *test*
