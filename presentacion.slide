@@ -386,9 +386,20 @@ No mas "tenes que instalar n dependencias" con n -> ∞, ha no ser que uses *cgo
 
 * Porque usan Go en Docker?
 
-*Buen* *conjunto* *de* *herramientas*
-- *go* *doc* *:* para ver la documentacion de un paquete.
-- *go* *get* *:* para instalar paquetes (github o repositorios propios, basados en git).
-- *go* *fmt* *:* formateador de codigo (no mas tabs vs espacios).
-- *go* *test* *:* ejecuta todos los Test* en *_test.go.
-- *go* *run* *:* ejecuta el codigo en el archivo, sin crear un binario (scripting).
+- *Buen* *conjunto* *de* *herramientas*
+*go* *doc* *:* para ver la documentacion de un paquete.
+*go* *get* *:* para instalar paquetes (github o repositorios propios, basados en git).
+*go* *fmt* *:* formateador de codigo (no mas tabs vs espacios).
+*go* *test* *:* ejecuta todos los Test* en *_test.go.
+*go* *run* *:* ejecuta el codigo en el archivo, sin crear un binario (scripting).
+
+- *Facilidad* *para* *compilar* *multiplataforma*.
+
+
+##########################################################
+
+* Porque usan Go en Docker?
+
+*Desventajas*
+
+- *Los* *maps* *no* *son* *thread-safe*
