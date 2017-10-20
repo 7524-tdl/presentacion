@@ -325,15 +325,15 @@ Go vs NodeJS
 
 Como se menciono en un slide anterior de esta presentación, concurrencia en Go se maneja con *goroutines*, que son manejados por un scheduler interno de Go y son Green Threads, según lo que vimos en clases pasadas.
 
-- Consumo de memoria
+- *Consumo* *de* *memoria*
 
 La creación de un *goroutine* necesita nada mas 2 kB de espacio en el stack, de ser necesario, crece asignándose espacio en el heap.
 
-- Costo de creación y destrucción
+- *Costo* *de* *creación* *y* *destrucción*
 
 Como la creación y la destrucción son manejados por el runtime de Go, así que los costos son bastante bajos.
 
-- Costo de cambio de contexto
+- *Costo* *de* *cambio* *de* *contexto*
 
 Como las *goroutines* son planificados de forma cooperativa y cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
 
@@ -348,11 +348,11 @@ Al scheduler de Go, solamente tiene en cuenta las goroutines no bloqueadas, a ni
 
 La ejecución es planificada de forma cooperativa.
 
-- Bloqueo
+- *Bloqueo*
 
 Las goroutines no bloquean el thread en el cual se están ejecutando, si están bloqueadas en *requests* *de* *red*, *sleep*, *operaciones* *de* *channels* o en *primitivas* *del* *paquete* *sync*
 
-- Threads a nivel SO
+- *Threads* *a* *nivel* *SO*
 
 Aunque no se pueda controlar manualmente la cantidad de threads que va a crear la runtime, podes limitar la cantidad de threads que puede crear, usando la instrucción *runtime.GOMAXPROC(n)*
 
@@ -402,4 +402,22 @@ No mas "tenes que instalar n dependencias" con n -> ∞, ha no ser que uses *cgo
 
 *Desventajas*
 
-- *Los* *maps* *no* *son* *thread-safe*
+*Los* *maps* *no* *son* *thread-safe*
+
+- Decision intencionada, son _muy_ rapidos.
+- Tenes que restringir el acceso mediante Mutex o usar channels de channels.
+
+*Limitaciones* *de* *go* *get*
+
+- No puede descargar versiones especificas, siempre descarga la ultima.
+- Docker tuvo que descargar localmente el codigo de todas las dependencias *vendoring* (esto no es malo, es medianamente incomodo).
+- Descargar de repositorios privados no es trivial.
+
+
+##########################################################
+
+* Porque usan Go en Docker?
+
+*Desventajas*
+
+*Limitaciones* *de* *go* *test*
