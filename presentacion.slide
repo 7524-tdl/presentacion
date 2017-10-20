@@ -15,7 +15,7 @@ Go, el reemplazo definitivo de C?
 
 ##########################################################
 
-* Origen 
+* Origen
 
 Anunciado en noviembre del 2009, Go nació como un experimento de Robert Griesemer y Rob Pike, ingenieros de Google, junto a Ken Thompson (creador del Lenguaje de programación B, predecesor de C), con el objetivo de diseñar un lenguaje que resuelva problemas comunes de otros lenguajes de programación, sin perder sus características útiles.
 
@@ -161,7 +161,7 @@ Para esto utilizamos *channels*. Los channels son tipados, esto significa que ca
 
 ##########################################################
 
-* Argument functions vs. Receiver functions 
+* Argument functions vs. Receiver functions
 
 Funciones clásicas con argumentos
 
@@ -171,7 +171,7 @@ Funciones clásicas con argumentos
 
 - Invocación
 
-        ladrar(p) 
+        ladrar(p)
 
 
 Funciones con un parámetro _receiver_
@@ -211,7 +211,7 @@ Supongamos que queremos actualizar una estructura aplicándole una función:
 
 ##########################################################
 
-* ¿Qué hicimos mal? 
+* ¿Qué hicimos mal?
 
 .image images/impossibru.png
 
@@ -230,14 +230,14 @@ Si una función modifica un valor y queremos que ese cambio persista fuera de la
 1. Que la función retorne el valor modificado
 2. Que la función reciba un argumento de tipo puntero en lugar de recibir el tipo del valor.
 
-Go permite usar punteros de forma bastante simple. 
+Go permite usar punteros de forma bastante simple.
 
 
 ##########################################################
 
 * Receiver functions con punteros
 
-No hace falta crear un puntero a 'musician'. Go permite saltearse ese paso, sólo hace falta definir que la función reciba un puntero. 
+No hace falta crear un puntero a 'musician'. Go permite saltearse ese paso, sólo hace falta definir que la función reciba un puntero.
 .play -edit code/impossibru.go /START OMIT/,/END OMIT/
 
 
@@ -292,7 +292,7 @@ No sólo no es necesario operar sobre punteros dentro de las funciones, operar c
 Top 5 frameworks (según las estadísticas de golanglibs.com)
 
         - node_exporter : para manejar métricas.
-        - stats : Paquete con funciones estadísticas. 
+        - stats : Paquete con funciones estadísticas.
         - gonum : Conjunto de bibliotecas numéricas.
         - bayesian : Clasificador Bayesiano ingenuo.
         - prometheus-operator : Biblioteca para manejar Clusters Prometheus sobre Kubernetes.
@@ -302,7 +302,7 @@ Uso (según OpenHub.net)
         - Proyectos : 2 677.
         - Lineas : 122 943 230 de las cuales, 93 518 418 son de código y 17 313 977 son comentarios.
         - Personas contribuyendo : 18 044.
-        - Commits : 803 563. 
+        - Commits : 803 563.
 
 A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el puesto 17, ascendiendo 2 puestos con respecto al mismo mes del año pasado, en 2016 fue en lenguaje que más popularidad gano.
 
@@ -317,8 +317,8 @@ Go vs NodeJS
 - *Rendimiento:* Go tiene un rendimiento similar a C y C++ (es decir, bastante bueno) mientras Node, al ser Javascript dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
 - *Concurrencia:* Go usa `goroutines` para concurrencia, que se clasifica como green-threads (según lo que vimos en clase), mientras Node (mas bien JS), usa asincronismo para emular concurrencia a nivel usuario.
 - *Ecosistema:* Mientras Go tiene mas de 58 mil bibliotecas, Node esta muy arriba con mas de 100 mil paquetes.
-  
-  
+
+
 ##########################################################
 
 * Concurrencia en Go
@@ -329,11 +329,11 @@ Como se menciono en un slide anterior de esta presentación, concurrencia en Go 
 
 La creación de un *goroutine* necesita nada mas 2 kB de espacio en el stack, de ser necesario, crece asignándose espacio en el heap.
 
-- Costo de creación y destrucción 
+- Costo de creación y destrucción
 
 Como la creación y la destrucción son manejados por el runtime de Go, así que los costos son bastante bajos.
 
-- Costo de cambio de contexto 
+- Costo de cambio de contexto
 
 Como las *goroutines* son planificados de forma cooperativa y cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
 
@@ -346,7 +346,7 @@ Como las *goroutines* son planificados de forma cooperativa y cuando se cambia d
 
 Al scheduler de Go, solamente tiene en cuenta las goroutines no bloqueadas, a nivel SO, el runtime tiene una cantidad de threads donde las goroutines van a ser ejecutadas, si una goroutine se bloquea, automáticamente el scheduler la saca de ejecución y pone otra goroutine a ejecutarse.
 
-La ejecución es planificada de forma cooperativa. 
+La ejecución es planificada de forma cooperativa.
 
 - Bloqueo
 
@@ -361,7 +361,7 @@ Aunque no se pueda controlar manualmente la cantidad de threads que va a crear l
 
 ##########################################################
 
-* Caso de estudio : Docker 
+* Caso de estudio : Docker
 
 Docker es un software para manejar y automatizar el trabajo con containers (principalmente en Linux, también en Windows, pero, who cares)
 
@@ -377,6 +377,18 @@ No mas "tenes que instalar n dependencias" con n -> ∞, ha no ser que uses *cgo
 
 - *Es* *neutral* *:*  No es C++, no es Python, no es Ruby, no es Java.
 
-- *Tiene* *lo* *que* *necesitaban* *:* 
+- *Tiene* *lo* *que* *necesitaban* *:* Buenas primitivas de asincronismo, Interfaces de bajo nivel, extensa libreria standard
+
+- *Duck* *typing* *:* se conoce como duck typing el estilo de tipificación dinámica de datos en que el conjunto actual de métodos y propiedades determina la validez semántica, en vez de que lo hagan la herencia de una clase en particular o la implementación de una interfaz específica.
 
 
+##########################################################
+
+* Porque usan Go en Docker?
+
+*Buen* *conjunto* *de* *herramientas*
+- *go* *doc* *:* para ver la documentacion de un paquete.
+- *go* *get* *:* para instalar paquetes (github o repositorios propios, basados en git).
+- *go* *fmt* *:* formateador de codigo (no mas tabs vs espacios).
+- *go* *test* *:* ejecuta todos los Test* en *_test.go.
+- *go* *run* *:* ejecuta el codigo en el archivo, sin crear un binario (scripting).
