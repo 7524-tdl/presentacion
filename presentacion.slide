@@ -160,6 +160,32 @@ Para esto utilizamos *channels*. Los channels son tipados, esto significa que ca
 
 
 ##########################################################
+* Ciclos
+En go existe el for casi identicamente a C
+
+.play code/if.go /START OMIT/,/END OMIT/
+
+Sin embargo podemos omitir el init y post statement
+
+.play code/while.go /START OMIT/,/END OMIT/
+
+A esta altura el for se comporta como un while!
+	
+*En*GO*no*existe*el*while*
+
+	for (condition){...}
+
+##########################################################
+* Defer
+
+El defer statement hace que la funcion contenida se ejecute cuando el entorno de la funcion que lo contiene finaliza.
+
+.play code/defer.go /START OMIT/,/END OMIT/
+
+Vemos como los argumentos de la funcion son evaluados inmediatamente, pero la funcion sum es llamada cuando la funcion main finaliza.
+
+
+##########################################################
 
 * Argument functions vs. Receiver functions
 
