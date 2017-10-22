@@ -363,9 +363,13 @@ Aunque no se pueda controlar manualmente la cantidad de threads que va a crear l
 
 * Caso de estudio : Docker
 
-Docker es un software para manejar y automatizar el trabajo con containers (principalmente en Linux, también en Windows, pero, who cares)
+Docker es un software multiplataforma que permite crear, desplegar y correr aplicaciones en módulos llamados containers. Un container incluye absolutamente todo lo que necesita una aplicación para ejecutarse.
 
-(COMPLETAR CON INFO SOBRE DOCKER)
+.image images/docker-gopher.png
+
+De esta forma es posible virtualizar un ambiente de trabajo homologado con sólo una única configuración de docker que define el sistema operativo en el que corre la aplicación, el server, las librerías utilizadas, etc.
+
+Docker es mucho más económico para los recursos del equipo que correr una máquina virtual, con o sin interfaz gráfica.
 
 
 ##########################################################
