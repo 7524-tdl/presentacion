@@ -7,7 +7,7 @@ import (
 
 // START OMIT
 func main() {
-	c := make(chan string) // declaración del channel de tripo string // HL
+	c := make(chan string) // declaración del channel de tipo string // HL
 
 	go printSaludo("Hola", 1000, c)
 	go printSaludo("Bonjour", 800, c)
