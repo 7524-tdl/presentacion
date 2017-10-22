@@ -70,6 +70,38 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 	} else {
 		io.Copy(os.Stdout, file)
 	}
+##########################################################
+* Tipos Basicos
+
+- bool
+- string
+
+- int, int8, int16, int32, int64
+- uint, uint8, uint16, uint32, uint64, uintptr
+
+- byte	-_alias_for_uint8_-
+
+- rune	-_alias_for_int32_-
+
+- float32, float64
+
+- complex64, complex128
+
+Los tipos int, uint y uintptr tienen un tamaño de 32 bits en sistemas de 32 bits y de 64 bits en sistemas de 64 bits.
+
+: uintptr is an integer type that is large enough to hold the bit pattern of any pointer.
+##########################################################
+* Inferencia de Tipos
+
+Dijimos que en go teniamos tipado estatico, sin embargo puedo definir variables sin definir su tipo!
+
+.code code/type_inference.go /START OMIT/,/END OMIT/
+
+Esto es porque en go el tipo de la variable se infiere del valor.
+
+.play code/type_inference2.go /START OMIT/,/END OMIT/
+
+: aca podemos ver que float depende del sistema
 
 ##########################################################
 
@@ -211,6 +243,38 @@ El defer statement hace que la funcion contenida se ejecute cuando el entorno de
 
 Vemos como los argumentos de la funcion son evaluados inmediatamente, pero la funcion sum es llamada cuando la funcion main finaliza.
 
+
+##########################################################
+* Arrays vs Slices (I)
+
+	var a [10]int
+- `a` es un array de 10 enteros.
+- El tamaño del array es parte de su tipo, entonces (_recordemos_tipado_estatico_), no se pueden redimensionar.
+- Sin embargo Go nos provee slices, cuyo tamaño es redimensionable dinamicamente.
+	a[1:5]
+- Esto es un slice con los elementos del 1 al 5 de `a`
+- Los slices y arrays tienen tamaño(len) y capacidad(cap)
+
+
+##########################################################
+* Arrays vs Slices (II)
+
+- Un slice es como una referencia a un array.
+- Un cambio en el slice va a afectar al array al cual referencia el slice.
+- Por lo tanto el cambio se va a ver reflejado en todos los slices que hacen referencia al mismo array.
+
+.play code/slices.go /START OMIT/,/END OMIT/
+
+
+##########################################################
+* Arrays vs Slices (III) - Construccion
+Esto construye un array y despues crea un slice que referencia a ese array:
+
+	[]string{"Juan", "Pedro", "Maria"}
+
+Tambien podemos construir slices con la funcion make:
+
+.play code/slices_construccion.go /START OMIT/,/END OMIT/
 
 ##########################################################
 
