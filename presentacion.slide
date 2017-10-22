@@ -1,4 +1,4 @@
-Go, el reemplazo definitivo de C?
+Introducción a Go
 75.24 - Teoría de Lenguajes
 
 
@@ -15,34 +15,61 @@ Go, el reemplazo definitivo de C?
 
 ##########################################################
 
-* Origen
+* Origen I
 
-Anunciado en noviembre del 2009, Go nació como un experimento de Robert Griesemer y Rob Pike, ingenieros de Google, junto a Ken Thompson (creador del Lenguaje de programación B, predecesor de C), con el objetivo de diseñar un lenguaje que resuelva problemas comunes de otros lenguajes de programación, sin perder sus características útiles.
+- Anunciado en noviembre del 2009 
 
-Características planeadas del nuevo lenguaje:
+- Nace como un experimento de Robert Griesemer y Rob Pike, ingenieros de Google, junto a Ken Thompson (creador del Lenguaje de programación B, predecesor de C)
+
+- Su objetivo era diseñar un lenguaje que resuelva problemas comunes de otros lenguajes de programación, sin perder sus características útiles.
+
+.image images/gopher-6.png
+
+##########################################################
+
+* Origen II
+
+Propusieron un lenguaje con las siguientes características:
 
 - Estáticamente tipado.
-- Productivo (?) y fácil de leer, sin mucha repetición ni demasiadas palabras reservadas.
+- Fácil de leer, sin mucha repetición ni demasiadas palabras reservadas.
+- Con una curva de aprendizaje acotada, de forma de optimizar la productividad.
 - Sin necesidad de un IDE.
-- Con soporte de redes (?) y concurrencia.
+- Versátil, con librerías que permitan diversos usos, y un manejo de concurrencia simple y eficiente.
 
 En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por su innecesaria complejidad.
 
 
 ##########################################################
 
-* Características básicas
-- Paradigma: Compilado, concurrente, imperativo, estructurado
-- Tipado: fuerte, estático, inferido, estructurado
+* Características principales
 
+- *Paradigma*: Estructurado y procedural _(como_ _C)_
+- *Modelo*: Imperativo
+- *Construcción* *y* *ejecución*: Compilado
+        $ go build main.go # Compila y genera un ejecutable a partir de los archivos .go incluidos
+
+        $ go run main.go # Compila y ejecuta inmediatamente el código incluido
+
+- *Tipado:* fuerte y estático. Además, _inferido_
+        materia := "Teoría del lenguaje" // Esto es una variable de tipo string
+
+        listaMaterias := []string{"Algo I", "Algo II"} // Esto es una variable de tipo slice de strings
 
 ##########################################################
 
-* Cosas copadas (sujeto a cambios)
-- Inferencia de tipos.
-- Binarios linkeados estáticamente, es decir, sin dependencias externas.
-- AGREGAR MAS.
+* Otras características interesantes:
 
+- Soporta concurrencia de una forma muy simple (más adelante ahondaremos)
+- Implementa interfaces para definir comportamientos (más adelante ahondaremos)
+- Maneja errores, no excepciones (no soporta bloques _try_ & _catch_) 
+
+        file, err := os.Open(filename)
+	if err != nil {
+		fmt.Println("There was an error:", err)
+	} else {
+		io.Copy(os.Stdout, file)
+	}
 
 ##########################################################
 
@@ -193,7 +220,7 @@ Funciones clásicas con argumentos
 
 - Definición
 
-        func ladrar(p perro) { // funcion con argumento
+        func ladrar(p perro) { // función con argumento
 
 - Invocación
 
@@ -204,7 +231,7 @@ Funciones con un parámetro _receiver_
 
 - Definición
 
-        func (p perro) ladrar() { // funcion con "receiver"
+        func (p perro) ladrar() { // función con "receiver"
 
 - Invocación
 
@@ -315,22 +342,23 @@ No sólo no es necesario operar sobre punteros dentro de las funciones, operar c
 ##########################################################
 
 * Estadísticas
+
 Top 5 frameworks (según las estadísticas de golanglibs.com)
 
-        - node_exporter : para manejar métricas.
-        - stats : Paquete con funciones estadísticas.
-        - gonum : Conjunto de bibliotecas numéricas.
-        - bayesian : Clasificador Bayesiano ingenuo.
-        - prometheus-operator : Biblioteca para manejar Clusters Prometheus sobre Kubernetes.
+        node_exporter : para manejar métricas.
+        stats : Paquete con funciones estadísticas.
+        gonum : Conjunto de bibliotecas numéricas.
+        bayesian : Clasificador Bayesiano ingenuo.
+        prometheus-operator : Biblioteca para manejar Clusters Prometheus sobre Kubernetes.
 
 Uso (según OpenHub.net)
 
-        - Proyectos : 2 677.
-        - Lineas : 122 943 230 de las cuales, 93 518 418 son de código y 17 313 977 son comentarios.
-        - Personas contribuyendo : 18 044.
-        - Commits : 803 563.
+        Proyectos : 2 677.
+        Líneas : 122 943 230 de las cuales, 93 518 418 son de código y 17 313 977 son comentarios.
+        Personas contribuyendo : 18 044.
+        Commits : 803 563.
 
-A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el puesto 17, ascendiendo 2 puestos con respecto al mismo mes del año pasado, en 2016 fue en lenguaje que más popularidad gano.
+A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el puesto 17, ascendiendo 2 puestos con respecto al mismo mes del año pasado, en 2016 fue en lenguaje que más popularidad ganó.
 
 
 ##########################################################
@@ -340,16 +368,16 @@ A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el pues
 Go vs NodeJS
 
 - *Madurez:* Ambos proyectos son bastante maduros, aunque la API de Node esta en constante cambio eso puede traer problemas a futuro futuro
-- *Rendimiento:* Go tiene un rendimiento similar a C y C++ (es decir, bastante bueno) mientras Node, al ser Javascript dinamicamente tipado, no alcanza el nivel de rendimiento de Go.
-- *Concurrencia:* Go usa `goroutines` para concurrencia, que se clasifica como green-threads (según lo que vimos en clase), mientras Node (mas bien JS), usa asincronismo para emular concurrencia a nivel usuario.
-- *Ecosistema:* Mientras Go tiene mas de 58 mil bibliotecas, Node esta muy arriba con mas de 100 mil paquetes.
+- *Rendimiento:* Go tiene un rendimiento similar a C y C++ (es decir, bastante bueno) mientras Node, al ser Javascript dinámicamente tipado, no alcanza el nivel de rendimiento de Go.
+- *Concurrencia:* Go usa `goroutines` para concurrencia, que se clasifica como green-threads, mientras que Node (más bien JS) usa asincronismo para emular concurrencia a nivel usuario.
+- *Ecosistema:* Mientras Go tiene más de 58 mil bibliotecas, Node esta muy arriba con más de 100 mil paquetes.
 
 
 ##########################################################
 
 * Concurrencia en Go
 
-Como se menciono en un slide anterior de esta presentación, concurrencia en Go se maneja con *goroutines*, que son manejados por un scheduler interno de Go y son Green Threads, según lo que vimos en clases pasadas.
+Como se mencionó en un slide anterior de esta presentación, concurrencia en Go se maneja con *goroutines*, que son manejados por un scheduler interno de Go y son Green Threads, según lo que vimos en clases pasadas.
 
 - *Consumo* *de* *memoria*
 
@@ -368,7 +396,7 @@ Como las *goroutines* son planificados de forma cooperativa y cuando se cambia d
 
 ##########################################################
 
-* Como se ejecutan las goroutines
+* ¿Cómo se ejecutan las goroutines?
 
 Al scheduler de Go, solamente tiene en cuenta las goroutines no bloqueadas, a nivel SO, el runtime tiene una cantidad de threads donde las goroutines van a ser ejecutadas, si una goroutine se bloquea, automáticamente el scheduler la saca de ejecución y pone otra goroutine a ejecutarse.
 
@@ -400,10 +428,10 @@ Docker es mucho más económico para los recursos del equipo que correr una máq
 
 ##########################################################
 
-* Porque usan Go en Docker?
+* ¿Por qué usan Go en Docker? I
 
 - *Compilación* *estática* *:* *go* *build* compila todo a un solo binario.
-No mas "tenes que instalar n dependencias" con n -> ∞, ha no ser que uses *cgo*, que te permite usar cualquier librería de C. O si no contás a *libc* como una dependencia (pero, quien no tiene libc?).
+No más "tenés que instalar n dependencias" con n -> ∞, a no ser que uses *cgo*, que te permite usar cualquier librería de C. O si no contás a *libc* como una dependencia (pero, quien no tiene libc?).
 
 - *Es* *neutral* *:*  No es C++, no es Python, no es Ruby, no es Java.
 
@@ -414,33 +442,33 @@ No mas "tenes que instalar n dependencias" con n -> ∞, ha no ser que uses *cgo
 
 ##########################################################
 
-* Porque usan Go en Docker?
+* ¿Por qué usan Go en Docker? II
 
 - *Buen* *conjunto* *de* *herramientas*
-*go* *doc* *:* para ver la documentacion de un paquete.
+*go* *doc* *:* para ver la documentación de un paquete.
 *go* *get* *:* para instalar paquetes (github o repositorios propios, basados en git).
-*go* *fmt* *:* formateador de codigo (no mas tabs vs espacios).
+*go* *fmt* *:* formateador de código (no más tabs vs espacios).
 *go* *test* *:* ejecuta todos los Test* en *_test.go.
-*go* *run* *:* ejecuta el codigo en el archivo, sin crear un binario (scripting).
+*go* *run* *:* ejecuta el código en el archivo, sin crear un binario (scripting).
 
 - *Facilidad* *para* *compilar* *multiplataforma*.
 
 
 ##########################################################
 
-* Porque usan Go en Docker?
+* ¿Por qué usan Go en Docker? III
 
 *Desventajas*
 
 *Los* *maps* *no* *son* *thread-safe*
 
-- Decision intencionada, son _muy_ rapidos.
-- Tenes que restringir el acceso mediante Mutex o usar channels de channels.
+- De cualquier forma, son _muy_ rápidos.
+- Hay que restringir el acceso mediante Mutex o usar channels de channels.
 
 *Limitaciones* *de* *go* *get*
 
-- No puede descargar versiones especificas, siempre descarga la ultima.
-- Docker tuvo que descargar localmente el codigo de todas las dependencias *vendoring* (esto no es malo, es medianamente incomodo).
+- No puede descargar versiones especificas, siempre descarga la última.
+- Docker tuvo que descargar localmente el código de todas las dependencias: *vendoring* (no es necesariamente malo, pero no es realmente cómodo ni elegante).
 - Descargar de repositorios privados no es trivial.
 
 
