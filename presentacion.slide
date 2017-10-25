@@ -112,6 +112,20 @@ Esto es porque en go el tipo de la variable se infiere del valor.
 
 ##########################################################
 
+* Funciones Anonimas (lambdas)
+
+La definicion de una funcion anonima es muy parecido a la forma de hacerlo en *Oz*
+
+.play code/lambdas.go /START OMIT/,/END OMIT/
+
+- Tambien se puede definir funciones recursivas sin mucho problema.
+
+.play code/recursive.go /START OMIT/,/END OMIT/
+
+
+
+##########################################################
+
 * Interfaces
 
 - Las interfaces en Go son herramientas para definir comportamientos similares en entidades o estructuras diferentes.
@@ -245,6 +259,7 @@ Vemos como los argumentos de la funcion son evaluados inmediatamente, pero la fu
 
 
 ##########################################################
+
 * Arrays vs Slices (I)
 
 	var a [10]int
@@ -257,6 +272,7 @@ Vemos como los argumentos de la funcion son evaluados inmediatamente, pero la fu
 
 
 ##########################################################
+
 * Arrays vs Slices (II)
 
 - Un slice es como una referencia a un array.
@@ -275,6 +291,7 @@ Esto construye un array y despues crea un slice que referencia a ese array:
 Tambien podemos construir slices con la funcion make:
 
 .play code/slices_construccion.go /START OMIT/,/END OMIT/
+
 
 ##########################################################
 
@@ -440,6 +457,10 @@ Go vs NodeJS
 ##########################################################
 
 * Comparación de rendimiento con otros lenguajes
+
+*Java*
+
+
 
 
 ##########################################################
