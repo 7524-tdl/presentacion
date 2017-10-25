@@ -101,7 +101,7 @@ Esto es porque en go el tipo de la variable se infiere del valor.
 
 .play code/type_inference2.go /START OMIT/,/END OMIT/
 
-: aca podemos ver que float depende del sistema
+Aca podemos ver que float depende del sistema
 
 ##########################################################
 
@@ -248,7 +248,7 @@ Como la creación y la destrucción son manejados por el runtime de Go, así que
 
 Como las *goroutines* son planificados de forma cooperativa y cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
 
-Como los schedulers modernos son O(1), la cantidad de goroutines no afecta el costo temporal de cambio de contexto.
+La cantidad de goroutines no afecta el costo temporal de cambio de contexto.
 
 
 ##########################################################
