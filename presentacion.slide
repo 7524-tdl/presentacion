@@ -222,11 +222,11 @@ Para esto utilizamos *channels*. Los channels son tipados, esto significa que ca
 * Ciclos
 En go existe el for casi identicamente a C
 
-.play code/if.go /START OMIT/,/END OMIT/
+.code code/if.go /START OMIT/,/END OMIT/
 
 Sin embargo podemos omitir el init y post statement
 
-.play code/while.go /START OMIT/,/END OMIT/
+.code code/while.go /START OMIT/,/END OMIT/
 
 A esta altura el for se comporta como un while!
 	
@@ -243,6 +243,10 @@ El defer statement hace que la funcion contenida se ejecute cuando el entorno de
 
 Vemos como los argumentos de la funcion son evaluados inmediatamente, pero la funcion sum es llamada cuando la funcion main finaliza.
 
+##########################################################
+* Defer Panic Recover
+
+.play code/defer_panic_recover.go /START OMIT/,/END OMIT/ 	
 
 ##########################################################
 * Arrays vs Slices (I)
