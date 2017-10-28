@@ -17,7 +17,7 @@ Introducción a Go
 
 * Origen I
 
-- Anunciado en noviembre del 2009 
+- Anunciado en noviembre del 2009
 
 - Nace como un experimento de Robert Griesemer y Rob Pike, ingenieros de Google, junto a Ken Thompson (creador del Lenguaje de programación B, predecesor de C)
 
@@ -62,7 +62,7 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 
 - Soporta concurrencia de una forma muy simple (más adelante ahondaremos)
 - Implementa interfaces para definir comportamientos (más adelante ahondaremos)
-- Maneja errores, no excepciones (no soporta bloques _try_ & _catch_) 
+- Maneja errores, no excepciones (no soporta bloques _try_ & _catch_)
 
         file, err := os.Open(filename)
 	if err != nil {
@@ -101,13 +101,27 @@ Esto es porque en go el tipo de la variable se infiere del valor.
 
 .play code/type_inference2.go /START OMIT/,/END OMIT/
 
-: aca podemos ver que float depende del sistema
+Aca podemos ver que float depende del sistema
 
 ##########################################################
 
 * Features importantes
 
 .image images/gopher-3.gif
+
+
+##########################################################
+
+* Funciones Anonimas (lambdas)
+
+La definicion de una funcion anonima es muy parecido a la forma de hacerlo en *Oz*
+
+.play code/lambdas.go /START OMIT/,/END OMIT/
+
+- Tambien se puede definir funciones recursivas sin mucho problema.
+
+.play code/recursive.go /START OMIT/,/END OMIT/
+
 
 
 ##########################################################
@@ -213,26 +227,61 @@ Para esto utilizamos *channels*. Los channels son tipados, esto significa que ca
 
 ##########################################################
 
+* Concurrencia en Go I
+
+Como se mencionó en un slide anterior de esta presentación, concurrencia en Go se maneja con *goroutines*, que son manejados por un scheduler interno de Go y son Green Threads, según lo que vimos en clases pasadas.
+
+- *Consumo* *de* *memoria*
+
+La creación de un *goroutine* necesita nada mas 2 kB de espacio en el stack, de ser necesario, crece asignándose espacio en el heap.
+
+- *Costo* *de* *creación* *y* *destrucción*
+
+Como la creación y la destrucción son manejados por el runtime de Go, así que los costos son bastante bajos.
+
+
+##########################################################
+
+* Concurrencia en Go II
+
+- *Costo* *de* *cambio* *de* *contexto*
+
+Como las *goroutines* son planificados de forma cooperativa y cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
+
+La cantidad de goroutines no afecta el costo temporal de cambio de contexto.
+
+
+##########################################################
+
+* ¿Cómo se ejecutan las goroutines? I
+
+Al scheduler de Go, solamente tiene en cuenta las goroutines no bloqueadas, a nivel SO, el runtime tiene una cantidad de threads donde las goroutines van a ser ejecutadas, si una goroutine se bloquea, automáticamente el scheduler la saca de ejecución y pone otra goroutine a ejecutarse.
+
+La ejecución es planificada de forma cooperativa.
+
+- *Bloqueo*
+
+Las goroutines no bloquean el thread en el cual se están ejecutando, si están bloqueadas en *requests* *de* *red*, *sleep*, *operaciones* *de* *channels* o en *primitivas* *del* *paquete* *sync*.
+
+
+##########################################################
+
+* ¿Cómo se ejecutan las goroutines? II
+
+
+- *Threads* *a* *nivel* *SO*
+
+Aunque no se pueda controlar manualmente la cantidad de threads que va a crear el runtime, podes limitar la cantidad de threads que puede crear, usando la instrucción *runtime.GOMAXPROC(n)*
+
+*Cooperative* *schedule* *:*  es un estilo de scheduling, donde cada proceso, voluntariamente cede el control de la CPU al sistema operativo (o runtime, en el caso de Go).
+
+
+##########################################################
+
 * Cosas curiosas
 
 .image images/gopher-2.png
 
-
-##########################################################
-* Ciclos
-En go existe el for casi identicamente a C
-
-.code code/if.go /START OMIT/,/END OMIT/
-
-Sin embargo podemos omitir el init y post statement
-
-.code code/while.go /START OMIT/,/END OMIT/
-
-A esta altura el for se comporta como un while!
-	
-*En*GO*no*existe*el*while*
-
-	for (condition){...}
 
 ##########################################################
 * Defer
@@ -249,6 +298,7 @@ Vemos como los argumentos de la funcion son evaluados inmediatamente, pero la fu
 .play code/defer_panic_recover.go /START OMIT/,/END OMIT/ 	
 
 ##########################################################
+
 * Arrays vs Slices (I)
 
 	var a [10]int
@@ -261,6 +311,7 @@ Vemos como los argumentos de la funcion son evaluados inmediatamente, pero la fu
 
 
 ##########################################################
+
 * Arrays vs Slices (II)
 
 - Un slice es como una referencia a un array.
@@ -279,6 +330,7 @@ Esto construye un array y despues crea un slice que referencia a ese array:
 Tambien podemos construir slices con la funcion make:
 
 .play code/slices_construccion.go /START OMIT/,/END OMIT/
+
 
 ##########################################################
 
@@ -443,42 +495,11 @@ Go vs NodeJS
 
 ##########################################################
 
-* Concurrencia en Go
+* Comparación de rendimiento con otros lenguajes
 
-Como se mencionó en un slide anterior de esta presentación, concurrencia en Go se maneja con *goroutines*, que son manejados por un scheduler interno de Go y son Green Threads, según lo que vimos en clases pasadas.
-
-- *Consumo* *de* *memoria*
-
-La creación de un *goroutine* necesita nada mas 2 kB de espacio en el stack, de ser necesario, crece asignándose espacio en el heap.
-
-- *Costo* *de* *creación* *y* *destrucción*
-
-Como la creación y la destrucción son manejados por el runtime de Go, así que los costos son bastante bajos.
-
-- *Costo* *de* *cambio* *de* *contexto*
-
-Como las *goroutines* son planificados de forma cooperativa y cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
-
-: Como los schedulers modernos son O(1), la cantidad de goroutines no afecta el costo temporal de cambio de contexto
+*Java*
 
 
-##########################################################
-
-* ¿Cómo se ejecutan las goroutines?
-
-Al scheduler de Go, solamente tiene en cuenta las goroutines no bloqueadas, a nivel SO, el runtime tiene una cantidad de threads donde las goroutines van a ser ejecutadas, si una goroutine se bloquea, automáticamente el scheduler la saca de ejecución y pone otra goroutine a ejecutarse.
-
-La ejecución es planificada de forma cooperativa.
-
-- *Bloqueo*
-
-Las goroutines no bloquean el thread en el cual se están ejecutando, si están bloqueadas en *requests* *de* *red*, *sleep*, *operaciones* *de* *channels* o en *primitivas* *del* *paquete* *sync*
-
-- *Threads* *a* *nivel* *SO*
-
-Aunque no se pueda controlar manualmente la cantidad de threads que va a crear la runtime, podes limitar la cantidad de threads que puede crear, usando la instrucción *runtime.GOMAXPROC(n)*
-
-: Cooperative schedule :  es un estilo de scheduling, donde cada proceso, voluntariamente cede el control de la CPU al sistema operativo (o runtime, en el caso de Go)
 
 
 ##########################################################
