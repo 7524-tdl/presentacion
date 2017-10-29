@@ -116,7 +116,7 @@ Acá podemos ver que float depende del sistema
 .image images/gopher-3.gif
 
 
-##########################################################
+########################################################## (Alex)
 
 * Funciones Anónimas (lambdas)
 
@@ -231,7 +231,7 @@ Para esto utilizamos *channels*. Los channels son tipados, esto significa que ca
 .play code/routines-3.go /START OMIT/,/END OMIT/
 
 
-##########################################################
+########################################################## (Alex)
 
 * Concurrencia en Go I
 
@@ -246,7 +246,7 @@ La creación de un *goroutine* necesita nada mas 2 kB de espacio en el stack, de
 Como la creación y la destrucción son manejados por el runtime de Go, así que los costos son bastante bajos.
 
 
-##########################################################
+########################################################## (Alex)
 
 * Concurrencia en Go II
 
@@ -257,7 +257,7 @@ Como las *goroutines* son planificados de forma cooperativa y cuando se cambia d
 La cantidad de goroutines no afecta el costo temporal de cambio de contexto.
 
 
-##########################################################
+########################################################## (Alex)
 
 * ¿Cómo se ejecutan las goroutines? I
 
@@ -270,7 +270,7 @@ La ejecución es planificada de forma cooperativa.
 Las goroutines no bloquean el thread en el cual se están ejecutando, si están bloqueadas en *requests* *de* *red*, *sleep*, *operaciones* *de* *channels* o en *primitivas* *del* *paquete* *sync*.
 
 
-##########################################################
+########################################################## (Alex)
 
 * ¿Cómo se ejecutan las goroutines? II
 
@@ -328,12 +328,12 @@ Vemos como los argumentos de la función son evaluados inmediatamente, pero la f
 
 
 ##########################################################
-* Arrays vs Slices (III) - Construccion
-Esto construye un array y despues crea un slice que referencia a ese array:
+* Arrays vs Slices (III) - Construcción
+Esto construye un array y después crea un slice que referencia a ese array:
 
 	[]string{"Juan", "Pedro", "Maria"}
 
-Tambien podemos construir slices con la funcion make:
+También podemos construir slices con la función make:
 
 .play code/slices_construccion.go /START OMIT/,/END OMIT/
 
@@ -374,7 +374,7 @@ Funciones con un parámetro _receiver_
 
 *¿Cuándo*usar*cada*una?*
 
-- Usar el criterio de la progamación orientada a objetos sería un enfoque erróneo. Go no es un lenguaje OOP. _¿Sólo_los_perros_ladran?_¿Puedo_yo_ladrar_como_un_perro?_.
+- Usar el criterio de la programación orientada a objetos sería un enfoque erróneo. Go no es un lenguaje OOP. _¿Sólo_los_perros_ladran?_¿Puedo_yo_ladrar_como_un_perro?_.
 
 - Si estamos usando interfaces, es más intuitivo usar receivers para el tipo que está implementando la interfaz.
 
@@ -465,7 +465,7 @@ No sólo no es necesario operar sobre punteros dentro de las funciones, operar c
 * Cuando no usar Go
 
 
-##########################################################
+########################################################## (Alex)
 
 * Estadísticas
 
@@ -487,7 +487,7 @@ Uso (según OpenHub.net)
 A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el puesto 17, ascendiendo 2 puestos con respecto al mismo mes del año pasado, en 2016 fue en lenguaje que más popularidad ganó.
 
 
-##########################################################
+########################################################## (Alex)
 
 * Comparación con lenguajes populares
 
@@ -499,16 +499,14 @@ Go vs NodeJS
 - *Ecosistema:* Mientras Go tiene más de 58 mil bibliotecas, Node esta muy arriba con más de 100 mil paquetes.
 
 
-##########################################################
+########################################################## (Alex)
 
 * Comparación de rendimiento con otros lenguajes
 
-*Java*
+.image images/go_vs_all-1.jpg
 
 
-
-
-##########################################################
+########################################################## (Alex)
 
 * Caso de estudio : Docker
 
@@ -521,7 +519,7 @@ De esta forma es posible virtualizar un ambiente de trabajo homologado con sólo
 Docker es mucho más económico para los recursos del equipo que correr una máquina virtual, con o sin interfaz gráfica.
 
 
-##########################################################
+########################################################## (Alex)
 
 * ¿Por qué usan Go en Docker? I
 
@@ -535,7 +533,7 @@ No más "tenés que instalar n dependencias" con n -> ∞, a no ser que uses *cg
 - *Duck* *typing* *:* se conoce como duck typing el estilo de tipificación dinámica de datos en que el conjunto actual de métodos y propiedades determina la validez semántica, en vez de que lo hagan la herencia de una clase en particular o la implementación de una interfaz específica.
 
 
-##########################################################
+########################################################## (Alex)
 
 * ¿Por qué usan Go en Docker? II
 
@@ -549,7 +547,7 @@ No más "tenés que instalar n dependencias" con n -> ∞, a no ser que uses *cg
 - *Facilidad* *para* *compilar* *multiplataforma*.
 
 
-##########################################################
+########################################################## (Alex)
 
 * ¿Por qué usan Go en Docker? III
 
