@@ -269,6 +269,7 @@ La ejecución es planificada de forma cooperativa.
 
 Las goroutines no bloquean el thread en el cual se están ejecutando, si están bloqueadas en *requests* *de* *red*, *sleep*, *operaciones* *de* *channels* o en *primitivas* *del* *paquete* *sync*.
 
+*Cooperative* *schedule* *:*  es un estilo de scheduling, donde cada proceso, voluntariamente cede el control de la CPU al sistema operativo (o runtime, en el caso de Go).
 
 ########################################################## (Alex)
 
@@ -278,8 +279,6 @@ Las goroutines no bloquean el thread en el cual se están ejecutando, si están 
 - *Threads* *a* *nivel* *SO*
 
 Aunque no se pueda controlar manualmente la cantidad de threads que va a crear el runtime, podes limitar la cantidad de threads que puede crear, usando la instrucción *runtime.GOMAXPROC(n)*
-
-*Cooperative* *schedule* *:*  es un estilo de scheduling, donde cada proceso, voluntariamente cede el control de la CPU al sistema operativo (o runtime, en el caso de Go).
 
 
 ##########################################################
@@ -471,18 +470,18 @@ No sólo no es necesario operar sobre punteros dentro de las funciones, operar c
 
 Top 5 frameworks (según las estadísticas de golanglibs.com)
 
-        node_exporter : para manejar métricas.
-        stats : Paquete con funciones estadísticas.
-        gonum : Conjunto de bibliotecas numéricas.
-        bayesian : Clasificador Bayesiano ingenuo.
-        prometheus-operator : Biblioteca para manejar Clusters Prometheus sobre Kubernetes.
+        beego : Framework open source para APIs REST, webapps y backends.
+        gin : Framework web con una API del estilo martini (otro framework web).
+        mattermost-server : Alternativa a Slack escrita en Golang + React.
+        martini : Framework web para Golang.
+        revel : Web framework full-stack.
 
 Uso (según OpenHub.net)
 
-        Proyectos : 2 677.
-        Líneas : 122 943 230 de las cuales, 93 518 418 son de código y 17 313 977 son comentarios.
-        Personas contribuyendo : 18 044.
-        Commits : 803 563.
+        Proyectos : 2 673.
+        Líneas : 142 602 614 de las cuales, 108 513 131 son de código y 20 146 041 son comentarios.
+        Personas contribuyendo : 18 915.
+        Commits : 843 727.
 
 A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el puesto 17, ascendiendo 2 puestos con respecto al mismo mes del año pasado, en 2016 fue en lenguaje que más popularidad ganó.
 
