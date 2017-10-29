@@ -1,0 +1,18 @@
+* Explicacion defer_panic_recover:
+
+Panic: Detiene el flujo del programa y entra en estado de panico. Cuando una funcion F llama a Panic se detiene la ejecucion de F y se ejeccutan todas las funciones "defereadas" (diferidas?). "Se devuelve el control" al caller de F y la ejecucion de F funciona como una llamada a PANIC. El proceso continua por todas las llamadas hasta que el programa crashea.
+
+Recover: Esta funcion toma el control de una rutina en estado de panico. Las llamadas a Recbover tienen sentido en una defered function. En una ejecucion normal recover devuelve nil y no hace nada mas. Si la rutina que se esta ejecutando entra en estado de panico y es capturada por recover, entonces recover toma el valor dado al panic y retoma la normal ejecucion del programa.
+
+- Para que sirve esto (otros usos):
+	Liberar un mutex
+	Imprimir un footer
+
+* Donde se usa Go
+Google
+Dropbox
+Soundcloud
+Docker
+Cloudflare
+BBC
+
