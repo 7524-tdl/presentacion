@@ -560,5 +560,11 @@ No más "tenés que instalar n dependencias" con n -> ∞, a no ser que uses *cg
 - Docker tuvo que descargar localmente el código de todas las dependencias: *vendoring* (no es necesariamente malo, pero no es realmente cómodo ni elegante).
 - Descargar de repositorios privados no es trivial.
 
+##########################################################
+
+* Otros proyectos en Go
+
+.image images/go_ranking.png
+
 
 ##########################################################
