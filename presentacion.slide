@@ -25,6 +25,7 @@ Introducción a Go
 
 .image images/gopher-6.png
 
+
 ##########################################################
 
 * Origen II
@@ -56,6 +57,7 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 
         listaMaterias := []string{"Algo I", "Algo II"} // Esto es una variable de tipo slice de strings
 
+
 ##########################################################
 
 * Otras características interesantes:
@@ -70,8 +72,10 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 	} else {
 		io.Copy(os.Stdout, file)
 	}
+
+
 ##########################################################
-* Tipos Basicos
+* Tipos Básicos
 
 - bool
 - string
@@ -89,11 +93,13 @@ En entrevistas posteriores, los 3 creadores comentaron su desagrado de C++, por 
 
 Los tipos int, uint y uintptr tienen un tamaño de 32 bits en sistemas de 32 bits y de 64 bits en sistemas de 64 bits.
 
-: uintptr is an integer type that is large enough to hold the bit pattern of any pointer.
+Uintptr is an integer type that is large enough to hold the bit pattern of any pointer.
+
+
 ##########################################################
 * Inferencia de Tipos
 
-Dijimos que en go teniamos tipado estatico, sin embargo puedo definir variables sin definir su tipo!
+Dijimos que en go teníamos tipado estático, sin embargo puedo definir variables sin definir su tipo!
 
 .code code/type_inference.go /START OMIT/,/END OMIT/
 
@@ -101,7 +107,7 @@ Esto es porque en go el tipo de la variable se infiere del valor.
 
 .play code/type_inference2.go /START OMIT/,/END OMIT/
 
-Aca podemos ver que float depende del sistema
+Acá podemos ver que float depende del sistema
 
 ##########################################################
 
@@ -112,13 +118,13 @@ Aca podemos ver que float depende del sistema
 
 ##########################################################
 
-* Funciones Anonimas (lambdas)
+* Funciones Anónimas (lambdas)
 
-La definicion de una funcion anonima es muy parecido a la forma de hacerlo en *Oz*
+- La definición de una función anónima es muy parecido a la forma de hacerlo en *Oz*
 
 .play code/lambdas.go /START OMIT/,/END OMIT/
 
-- Tambien se puede definir funciones recursivas sin mucho problema.
+- También se puede definir funciones recursivas sin mucho problema.
 
 .play code/recursive.go /START OMIT/,/END OMIT/
 
@@ -286,16 +292,16 @@ Aunque no se pueda controlar manualmente la cantidad de threads que va a crear e
 ##########################################################
 * Defer
 
-El defer statement hace que la funcion contenida se ejecute cuando el entorno de la funcion que lo contiene finaliza.
+El defer statement hace que la función contenida se ejecute cuando el entorno de la función que lo contiene finaliza.
 
 .play code/defer.go /START OMIT/,/END OMIT/
 
-Vemos como los argumentos de la funcion son evaluados inmediatamente, pero la funcion sum es llamada cuando la funcion main finaliza.
+Vemos como los argumentos de la función son evaluados inmediatamente, pero la función sum es llamada cuando la función main finaliza.
 
 ##########################################################
 * Defer Panic Recover
 
-.play code/defer_panic_recover.go /START OMIT/,/END OMIT/ 	
+.play code/defer_panic_recover.go /START OMIT/,/END OMIT/
 
 ##########################################################
 
@@ -303,8 +309,8 @@ Vemos como los argumentos de la funcion son evaluados inmediatamente, pero la fu
 
 	var a [10]int
 - `a` es un array de 10 enteros.
-- El tamaño del array es parte de su tipo, entonces (_recordemos_tipado_estatico_), no se pueden redimensionar.
-- Sin embargo Go nos provee slices, cuyo tamaño es redimensionable dinamicamente.
+- El tamaño del array es parte de su tipo, entonces (_recordemos_tipado_estatico_), no se pueden re-dimensionar.
+- Sin embargo Go nos provee slices, cuyo tamaño es re-dimensionable dinámicamente.
 	a[1:5]
 - Esto es un slice con los elementos del 1 al 5 de `a`
 - Los slices y arrays tienen tamaño(len) y capacidad(cap)
