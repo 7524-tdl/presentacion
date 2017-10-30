@@ -309,7 +309,7 @@ Vemos como los argumentos de la función son evaluados inmediatamente, pero la f
 - Un cambio en el slice va a afectar al array al cual referencia el slice.
 - Por lo tanto el cambio se va a ver reflejado en todos los slices que hacen referencia al mismo array.
 
-.play code/slices.go /START OMIT/,/END OMIT/
+.play -edit code/slices.go /START OMIT/,/END OMIT/
 
 
 ##########################################################
@@ -320,7 +320,7 @@ Esto construye un array y después crea un slice que referencia a ese array:
 
 También podemos construir slices con la función make:
 
-.play code/slices_construccion.go /START OMIT/,/END OMIT/
+.play -edit code/slices_construccion.go /START OMIT/,/END OMIT/
 
 
 ##########################################################

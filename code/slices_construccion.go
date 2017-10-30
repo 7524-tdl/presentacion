@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 //START OMIT
-	a := make([]int, 5)
+	a := make([]int, 10)
 	printSlice("a", a)
 
 	b := make([]int, 0, 5)
@@ -12,11 +12,8 @@ func main() {
 
 	c := b[:2]
 	printSlice("c", c)
-
-	d := c[2:5]
-	printSlice("d", d)
 	
-	e := append(d, 10)
+	e := append(c, 10)
 	printSlice("e", e)
 //END OMIT
 }
