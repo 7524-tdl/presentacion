@@ -230,56 +230,42 @@ Para esto utilizamos *channels*. Los channels son tipados, esto significa que ca
 
 .play code/routines-3.go /START OMIT/,/END OMIT/
 
+########################################################## (Alex)
+
+* La concurrencia en Go (I)
+
+*Funcionamiento*
+
+Las *goroutines* corren en Green Threads, admnistrados por el runtime de Go.
+
+El runtime tiene un thread pool configurable donde las goroutines pueden ser ejecutadas.
+
+*Go* *scheduler*
+
+Solamente se avanza con las goroutines no bloqueadas a nivel SO. 
+
+El scheduling es cooperativo: cada proceso voluntariamente cede el control de la CPU al runtime si encuentra en espera. Si una goroutine se bloquea, deja de ejecutarse y pasa a ejecutarse otra.
+
+Por esta razón, las *goroutines* no bloquean el thread en el cual se ejecutan aunque esten bloqueadas por _web_ _requests_, _sleeps_, _operaciones_ _sobre_ _channels_, o _primitivas_ _del_ _paquete_ _sync_.
+
 
 ########################################################## (Alex)
 
-* Concurrencia en Go I
+* La concurrencia en Go (II)
 
-Como se mencionó en un slide anterior de esta presentación, concurrencia en Go se maneja con *goroutines*, que son manejados por un scheduler interno de Go y son Green Threads, según lo que vimos en clases pasadas.
+*Consumo* *de* *memoria*
 
-- *Consumo* *de* *memoria*
+La creación de una *goroutine* necesita nada más 2 kB de espacio en el stack, de ser necesario, crece asignándose espacio en el heap.
 
-La creación de un *goroutine* necesita nada mas 2 kB de espacio en el stack, de ser necesario, crece asignándose espacio en el heap.
-
-- *Costo* *de* *creación* *y* *destrucción*
+*Costo* *de* *creación* *y* *destrucción*
 
 Como la creación y la destrucción son manejados por el runtime de Go, así que los costos son bastante bajos.
 
+*Costo* *de* *cambio* *de* *contexto*
 
-########################################################## (Alex)
-
-* Concurrencia en Go II
-
-- *Costo* *de* *cambio* *de* *contexto*
-
-Como las *goroutines* son planificados de forma cooperativa y cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
+Cuando se cambia de contexto, solamente se necesita guardar 3 registros, *Program* *Counter*, *Stack* *Pointer* y *DX*, por ende, el costo de cambio de contexto es muy bajo.
 
 La cantidad de goroutines no afecta el costo temporal de cambio de contexto.
-
-
-########################################################## (Alex)
-
-* ¿Cómo se ejecutan las goroutines? I
-
-Al scheduler de Go, solamente tiene en cuenta las goroutines no bloqueadas, a nivel SO, el runtime tiene una cantidad de threads donde las goroutines van a ser ejecutadas, si una goroutine se bloquea, automáticamente el scheduler la saca de ejecución y pone otra goroutine a ejecutarse.
-
-La ejecución es planificada de forma cooperativa.
-
-- *Bloqueo*
-
-Las goroutines no bloquean el thread en el cual se están ejecutando, si están bloqueadas en *requests* *de* *red*, *sleep*, *operaciones* *de* *channels* o en *primitivas* *del* *paquete* *sync*.
-
-*Cooperative* *schedule* *:*  es un estilo de scheduling, donde cada proceso, voluntariamente cede el control de la CPU al sistema operativo (o runtime, en el caso de Go).
-
-########################################################## (Alex)
-
-* ¿Cómo se ejecutan las goroutines? II
-
-
-- *Threads* *a* *nivel* *SO*
-
-Aunque no se pueda controlar manualmente la cantidad de threads que va a crear el runtime, podes limitar la cantidad de threads que puede crear, usando la instrucción *runtime.GOMAXPROC(n)*
-
 
 ##########################################################
 
