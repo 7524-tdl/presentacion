@@ -568,5 +568,50 @@ No más "tenés que instalar n dependencias" con n -> ∞, a no ser que uses *cg
 
 .image images/go_ranking.png
 
+.link http://herman.asia/open-source-go-projects-to-learn-from
+
 
 ##########################################################
+
+* ¿Dónde puedo seguir aprendiendo?
+
+.link https://play.golang.org/
+
+.link https://tour.golang.org/
+
+.link https://github.com/avelino/awesome-go
+
+.link https://go.libhunt.com/
+
+.link https://github.com/golang/go/wiki/Projects
+
+- Los proyectos que vimos antes!
+
+##########################################################
+
+* Referencias
+
+.link https://golang.org/ golang.org
+
+.link https://es.slideshare.net/jpetazzo/docker-and-go-why-did-we-decide-to-write-docker-in-go
+
+.link https://benchmarksgame.alioth.debian.org/
+
+.link http://herman.asia/open-source-go-projects-to-learn-from
+
+.link https://talks.golang.org/2012/splash.article
+
+.link https://talks.golang.org/2017/state-of-go-may.slide#38
+
+##########################################################
+
+* ¿Preguntas?
+
+##########################################################
+
+
+
+
+
+
+
