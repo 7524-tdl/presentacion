@@ -444,10 +444,23 @@ No sólo no es necesario operar sobre punteros dentro de las funciones, operar c
 
 * Cuando usar Go
 
+Go se puede utilizar en casos en los que los siguientes aspectos sean prioridad
+
+- Networking: servidores TCP/HTTP
+- Manejo de concurrencia
+- Optimización de recursos (- servidores)
+- Facilidad de deployment de una solución
+- Equipos grandes: Agilidad y calidad en el código
 
 ##########################################################
 
 * Cuando no usar Go
+
+Go no es recomendable si uno busca:
+
+- Solución orientada a objetos de la manera tradicional
+- Herramientas que resuelvan casi cualquier problema
+- Desarrollo de apps desktop/mobile
 
 
 ########################################################## (Alex)
@@ -474,14 +487,14 @@ A Septiembre de 2017, según el ranking TIOBE de popularidad, Go esta en el pues
 
 ########################################################## (Alex)
 
-* Comparación con lenguajes populares
+* Comparación con otras herramientas populares
 
 Go vs NodeJS
 
-- *Madurez:* Ambos proyectos son bastante maduros, aunque la API de Node esta en constante cambio eso puede traer problemas a futuro futuro
-- *Rendimiento:* Go tiene un rendimiento similar a C y C++ (es decir, bastante bueno) mientras Node, al ser Javascript dinámicamente tipado, no alcanza el nivel de rendimiento de Go.
-- *Concurrencia:* Go usa `goroutines` para concurrencia, que se clasifica como green-threads, mientras que Node (más bien JS) usa asincronismo para emular concurrencia a nivel usuario.
-- *Ecosistema:* Mientras Go tiene más de 58 mil bibliotecas, Node esta muy arriba con más de 100 mil paquetes.
+- *Madurez:* En la búsqueda de mejoras, node realiza periódicamente cambios en su API que llevan a un constante cambio de herramientas o codebases.
+- *Rendimiento:* Go es compilado mientras node, ejecuta javascript (interpretado). Esto hace que Go sea mucho más performante que node.
+- *Concurrencia:* Go usa `goroutines` para concurrencia, mientras que Node maneja operaciones bloqueantes asincrónicamente, basado en su event-loop.
+- *Ecosistema:* La comunidad de node es muy grande y abarca más campos de aplicación, la de Go está en crecimiento continuo.
 
 
 ########################################################## (Alex)
